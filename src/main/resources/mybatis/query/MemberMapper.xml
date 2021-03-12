@@ -8,12 +8,14 @@
         INSERT INTO MEMBER
             (
              USER_ID,
+             USER_NAME,
              PASSWORD,
              REG_DATE
              )
         VALUES
             (
             #{userId},
+            #{userName},
             #{password},
             NOW()
             )

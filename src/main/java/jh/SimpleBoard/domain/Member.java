@@ -9,6 +9,7 @@ public class Member {
 
     private long userNo;
     private String userId;
+    private String userName;
     private String password;
     private Date regDate;
 }
