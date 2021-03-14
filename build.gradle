@@ -8,13 +8,16 @@ group = 'jh'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-//lombok 설정 추가 시작
 configurations {
+	//lombok 설정
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	// logBack 의존성 제거
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 }
-//lombok 설정 추가 끝
 
 repositories {
 	mavenCentral()
@@ -24,15 +27,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	// MySQL, mybatis
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	runtimeOnly 'mysql:mysql-connector-java'
 
-	//lombok 라이브러리 추가 시작
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
-	//lombok 라이브러리 추가 끝
+
+	// Logger - log4j2
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }
 
 test {
