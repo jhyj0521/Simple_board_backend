@@ -2,37 +2,55 @@
 <Configuration status="INFO">
 
     <Properties>
-        <Property name="logFileName">springStudy</Property>
-        <Property name="consoleLayout">%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable</Property>
-        <Property name="fileLayout">%d [%t] %-5level %c(%M:%L) - %m%n</Property>
+        <Property name="consoleLayout">%style{%d{ISO8601}}{black} %highlight{%-5p}{FATAL=bg_red, ERROR=red, INFO=green, DEBUG=blue} %l: %msg%n</Property>
     </Properties>
 
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="${consoleLayout}" />
         </Console>
-        <RollingFile name="file" fileName="logs/${logFileName}.log" filePattern="logs/${logFileName}.%d{yyyy-MM-dd-hh}.log">
-            <PatternLayout pattern="${fileLayout}" />
-            <Policies>
-                <TimeBasedTriggeringPolicy modulate="true" interval="1" /><!-- 시간별 로그 파일 생성-->
-            </Policies>
-            <DefaultRolloverStrategy max="5" fileIndex="min" /><!-- 롤링 파일 5개 까지 생성 -->
-        </RollingFile>
     </Appenders>
 
     <Loggers>
 
-        <!-- 스프링 프레임워크에서 찍는건 level을 info로 설정 -->
-        <logger name="org.springframework" level="info" additivity="false" >
-            <AppenderRef ref="console" />
-            <AppenderRef ref="file" />
+        <Root level="DEBUG" additivity="false">
+            <AppenderRef ref="console"/>
+        </Root>
+
+        <logger name="org.springframework" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="org.mybatis" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="log4jdbc" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="org.apache" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="com.zaxxer" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="org.apache" level="ERROR" additivity="false">
+            <AppenderRef ref="console"/>
         </logger>
 
-        <!-- rolling file에는 debug, console에는 info 분리하여 처리 가능하다. -->
-        <logger name="com.huisam.springstudy" additivity="true" >
-            <AppenderRef ref="console" level="info" />
-            <AppenderRef ref="file" level="debug" />
-        </logger>
+        <!-- log4jdbc 옵션 설정 -->
+        <logger name="jdbc" level="OFF"/>
+        <!-- 커넥션 open close 이벤트를 로그로 남긴다. -->
+        <logger name="jdbc.connection" level="OFF"/>
+        <!-- SQL문만을 로그로 남기며, PreparedStatement일 경우 관련된 argument 값으로 대체된 SQL문이 보여진다. -->
+        <logger name="jdbc.sqlonly" level="OFF"/>
+        <!-- SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함한다. -->
+        <logger name="jdbc.sqltiming" level="DEBUG"/>
+        <!-- ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 남긴다. 많은 양의 로그가 생성되므로 특별히 JDBC 문제를 추적해야 할 필요가 있는 경우를 제외하고는 사용을 권장하지 않는다. -->
+        <logger name="jdbc.audit" level="OFF"/>
+        <!-- ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 남기므로 매우 방대한 양의 로그가 생성된다. -->
+        <logger name="jdbc.resultset" level="OFF"/>
+        <!-- SQL 결과 조회된 데이터의 table을 로그로 남긴다. -->
+        <logger name="jdbc.resultsettable" level="DEBUG"/>
+
 
     </Loggers>
 </Configuration>
