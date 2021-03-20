@@ -1,5 +1,6 @@
 package jh.SimpleBoard.controller;
 
+import jh.SimpleBoard.common.BaseResponse;
 import jh.SimpleBoard.domain.Member;
 import jh.SimpleBoard.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/new")
-    public void signUp(@RequestBody Member member) {
+    public BaseResponse signUp(@RequestBody Member member) {
         memberService.join(member);
+        return new BaseResponse();
     }
 }

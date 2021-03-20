@@ -1,5 +1,6 @@
 package jh.SimpleBoard.configuration;
 
+import jh.SimpleBoard.common.BaseHandlerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

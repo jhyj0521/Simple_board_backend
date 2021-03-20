@@ -1,4 +1,4 @@
-package jh.SimpleBoard.configuration;
+package jh.SimpleBoard.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
