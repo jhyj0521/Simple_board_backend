@@ -1,6 +1,8 @@
 package jh.SimpleBoard.controller;
 
 import jh.SimpleBoard.common.BaseResponse;
+import jh.SimpleBoard.common.BaseResponseCode;
+import jh.SimpleBoard.configuration.exception.BaseException;
 import jh.SimpleBoard.domain.Member;
 import jh.SimpleBoard.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,6 @@ public class MemberController {
     @PostMapping("/new")
     public BaseResponse signUp(@RequestBody Member member) {
         memberService.join(member);
-        return new BaseResponse();
+        throw new BaseException(BaseResponseCode.ERROR);
     }
 }

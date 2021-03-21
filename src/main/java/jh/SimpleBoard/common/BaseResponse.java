@@ -20,4 +20,9 @@ public class BaseResponse <T> {
         this.code = BaseResponseCode.SUCCESS;
         this.data = data;
     }
+
+    public BaseResponse(BaseResponseCode code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 }
