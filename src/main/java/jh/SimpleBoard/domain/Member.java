@@ -7,9 +7,9 @@ import java.util.Date;
 @Data
 public class Member {
 
-    private long userNo;
-    private String userId;
-    private String userName;
+    private long memberNo;
+    private String memberId;
+    private String memberName;
     private String password;
     private Date regDate;
 }

@@ -16,4 +16,9 @@ public class MemberServiceImpl implements MemberService{
         memberMapper.save(member);
     }
 
+    @Override
+    public int dupMemberId(String memberId) {
+        return memberMapper.dupMemberId(memberId);
+    }
+
 }

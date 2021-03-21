@@ -6,4 +6,5 @@ public interface MemberService {
 
     void join(Member member);
 
+    int dupMemberId(String memberId);
 }

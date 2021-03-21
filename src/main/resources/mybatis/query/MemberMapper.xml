@@ -7,17 +7,24 @@
     <insert id="save" parameterType="Member">
         INSERT INTO MEMBER
             (
-             USER_ID,
-             USER_NAME,
+             MEMBER_ID,
+             MEMBER_NAME,
              PASSWORD,
              REG_DATE
              )
         VALUES
             (
-            #{userId},
-            #{userName},
+            #{memberId},
+            #{memberName},
             #{password},
             NOW()
             )
     </insert>
+
+    <!-- 회원 아이디 중복 체크 -->
+    <select id="dupMemberId" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+        FROM MEMBER
+        WHERE MEMBER_ID = #{memberId}
+    </select>
 </mapper>

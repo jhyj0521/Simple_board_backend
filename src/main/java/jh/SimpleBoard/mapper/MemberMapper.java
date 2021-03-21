@@ -10,4 +10,5 @@ public interface MemberMapper {
 
     void save(Member member);
 
+    int dupMemberId(String memberId);
 }
