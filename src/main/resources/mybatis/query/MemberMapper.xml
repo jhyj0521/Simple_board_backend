@@ -10,6 +10,7 @@
              MEMBER_ID,
              MEMBER_NAME,
              PASSWORD,
+             SALT,
              REG_DATE
              )
         VALUES
@@ -17,6 +18,7 @@
             #{memberId},
             #{memberName},
             #{password},
+            #{salt},
             NOW()
             )
     </insert>

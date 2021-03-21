@@ -5,6 +5,8 @@ import jh.SimpleBoard.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static jh.SimpleBoard.common.SHA256Util.setEncrypt;
+
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService{
@@ -13,6 +15,10 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void join(Member member) {
+
+        // 솔트를 생성하고, 비밀번호를 암호화하여 저장
+        setEncrypt(member);
+
         memberMapper.save(member);
     }
 

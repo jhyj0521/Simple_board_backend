@@ -11,5 +11,6 @@ public class Member {
     private String memberId;
     private String memberName;
     private String password;
+    private String salt;
     private Date regDate;
 }
