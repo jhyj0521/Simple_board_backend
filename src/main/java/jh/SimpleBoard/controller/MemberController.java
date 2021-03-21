@@ -18,6 +18,6 @@ public class MemberController {
     @PostMapping("/new")
     public BaseResponse signUp(@RequestBody Member member) {
         memberService.join(member);
-        throw new BaseException(BaseResponseCode.ERROR);
+        return new BaseResponse();
     }
 }
