@@ -1,6 +1,9 @@
 package jh.SimpleBoard.configuration;
 
-import jh.SimpleBoard.common.BaseHandlerInterceptor;
+import jh.SimpleBoard.common.AuthorizationExtractor;
+import jh.SimpleBoard.common.JwtTokenUtil;
+import jh.SimpleBoard.interceptor.BaseHandlerInterceptor;
+import jh.SimpleBoard.interceptor.BearerAuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -28,8 +31,24 @@ public class WebConfiguration implements WebMvcConfigurer {
         return new BaseHandlerInterceptor();
     }
 
+    @Bean
+    public BearerAuthInterceptor bearerAuthInterceptor() {
+        return new BearerAuthInterceptor(authorizationExtractor(), jwtTokenUtil());
+    }
+
+    @Bean
+    public AuthorizationExtractor authorizationExtractor() {
+        return new AuthorizationExtractor();
+    }
+
+    @Bean
+    public JwtTokenUtil jwtTokenUtil() {
+        return new JwtTokenUtil();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(baseHandlerInterceptor());
+        registry.addInterceptor(bearerAuthInterceptor()).excludePathPatterns("/members/*");
     }
 }

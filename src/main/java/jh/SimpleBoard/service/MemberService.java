@@ -8,7 +8,7 @@ public interface MemberService {
 
     int dupMemberId(String memberId);
 
-    String login(Member member);
+    String createToken(Member member);
 
     int idPassCheck(Member member);
 }

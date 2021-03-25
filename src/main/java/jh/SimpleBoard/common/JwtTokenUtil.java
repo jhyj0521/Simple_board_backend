@@ -2,12 +2,10 @@ package jh.SimpleBoard.common;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 
-@Component
 public class JwtTokenUtil {
     SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private long tokenValidMillisecond = 1000L * 60 * 60;

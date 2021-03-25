@@ -1,4 +1,4 @@
-package jh.SimpleBoard.common;
+package jh.SimpleBoard.interceptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

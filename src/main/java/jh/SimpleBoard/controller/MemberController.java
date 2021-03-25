@@ -65,8 +65,7 @@ public class MemberController {
         }
 
         // 토큰 생성
-        String token = memberService.login(member);
-        log.info(token);
+        String token = memberService.createToken(member);
 
         // 토큰 쿠키에 담아줌
         Cookie cookie = new Cookie("jwt", token);

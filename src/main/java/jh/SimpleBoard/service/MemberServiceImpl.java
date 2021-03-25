@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public String login(Member member) {
+    public String createToken(Member member) {
         // 회원 아이디로 회원 번호를 받아옴
         String memberNo = memberMapper.getMemberNo(member.getMemberId());
 
