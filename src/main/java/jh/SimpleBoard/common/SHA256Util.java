@@ -65,18 +65,4 @@ public class SHA256Util {
 
         return result;
     }
-
-    /**
-     * 난수 솔트를 생성하여 저장하고, 비밀번호를 암호화하여 저장한다.
-     * @param member - 비밀번호를 암호화할 유저
-     * @return
-     */
-    public static void setEncrypt (Member member) {
-
-        String salt = generateSalt();
-        member.setSalt(salt);
-
-        String password = getEncrypt(member.getPassword(), salt);
-        member.setPassword(password);
-    }
 }

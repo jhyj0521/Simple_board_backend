@@ -10,5 +10,11 @@ public interface MemberMapper {
 
     void save(Member member);
 
-    int dupMemberId(String memberId);
+    int findById(String memberId);
+
+    String getMemberSalt(String memberId);
+
+    int idPassCheck(Member member);
+
+    String getMemberNo(String memberId);
 }
