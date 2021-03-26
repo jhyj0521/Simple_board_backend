@@ -1,8 +1,9 @@
-package jh.SimpleBoard.service;
+package jh.SimpleBoard.serviceImpl;
 
 import jh.SimpleBoard.common.JwtTokenUtil;
 import jh.SimpleBoard.domain.Member;
 import jh.SimpleBoard.mapper.MemberMapper;
+import jh.SimpleBoard.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import static jh.SimpleBoard.common.SHA256Util.*;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
     private final JwtTokenUtil jwtTokenUtil;
