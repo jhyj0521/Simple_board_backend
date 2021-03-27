@@ -25,7 +25,7 @@ public class JwtTokenUtil {
     }
 
     //토큰에서 회원 구별 정보 추출
-    public String getUserPk(String token) {
+    public String getMemberPk(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()

@@ -3,4 +3,21 @@
 
 <mapper namespace="jh.SimpleBoard.mapper.BoardMapper">
 
+    <!-- 게시물 작성 -->
+    <insert id="save" parameterType="Board">
+        INSERT INTO BOARD
+        (
+            MEMBER_NO,
+            TITLE,
+            CONTENT,
+            REG_DATE
+        )
+        VALUES
+        (
+            #{memberNo},
+            #{title},
+            #{content},
+            NOW()
+        )
+    </insert>
 </mapper>

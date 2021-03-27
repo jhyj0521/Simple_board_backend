@@ -19,8 +19,6 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
     private final AuthorizationExtractor authorizationExtractor;
     private final JwtTokenUtil jwtTokenUtil;
 
-    Logger logger = LoggerFactory.getLogger(getClass());
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -33,8 +31,8 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
             throw new UnauthorizedException(BaseResponseCode.CODE_401);
         }
 
-        String userPk = jwtTokenUtil.getUserPk(token);
-        request.setAttribute("userPk", userPk);
+        String memberPk = jwtTokenUtil.getMemberPk(token);
+        request.setAttribute("memberPk", memberPk);
 
         return true;
     }

@@ -22,6 +22,11 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    /**
+     * 회원가입
+     * @param member
+     * @return
+     */
     @PostMapping("/new")
     public BaseResponse signUp(@RequestBody Member member) {
         // 아이디 필수 체크
@@ -47,6 +52,12 @@ public class MemberController {
         return new BaseResponse();
     }
 
+    /**
+     * 로그인
+     * @param member
+     * @param response
+     * @return
+     */
     @PostMapping("/login")
     public BaseResponse signIn(@RequestBody Member member, HttpServletResponse response) {
         // 아이디 필수 체크

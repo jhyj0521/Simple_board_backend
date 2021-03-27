@@ -7,6 +7,7 @@ import jh.SimpleBoard.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ import java.util.Map;
 import static jh.SimpleBoard.common.SHA256Util.*;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 @Slf4j
 public class MemberServiceImpl implements MemberService {

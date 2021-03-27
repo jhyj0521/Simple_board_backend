@@ -6,21 +6,21 @@
     <!-- 회원 가입 -->
     <insert id="save" parameterType="Member">
         INSERT INTO MEMBER
-            (
+        (
              MEMBER_ID,
              MEMBER_NAME,
              PASSWORD,
              SALT,
              REG_DATE
-             )
+        )
         VALUES
-            (
+        (
             #{memberId},
             #{memberName},
             #{password},
             #{salt},
             NOW()
-            )
+        )
     </insert>
 
     <!-- 회원 아이디 중복 체크 -->
