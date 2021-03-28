@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 @RequiredArgsConstructor
@@ -39,13 +42,15 @@ public class BoardController {
             throw new BaseException(BaseResponseCode.CODE_100, new String[]{"글내용"});
         }
 
-        // 인터셉터에서 jwt를 읽고 pk값을 Attribute에 넣어서 받아온다.
+        // request에 저장한 id를 받아와서 Board 객체에 값을 넣어준다.
         String memberPk = (String) (request.getAttribute("memberPk"));
         long memberNo = Integer.parseInt(memberPk);
         board.setMemberNo(memberNo);
 
         long boardNo = boardService.insertBoard(board);
+        Map<String, Object> ret = new HashMap();
+        ret.put("boardNo", boardNo);
 
-        return new BaseResponse();
+        return new BaseResponse(ret);
     }
 }

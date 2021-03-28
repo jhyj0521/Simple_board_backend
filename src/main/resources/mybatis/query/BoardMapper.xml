@@ -19,5 +19,8 @@
             #{content},
             NOW()
         )
+        <selectKey keyProperty="boardNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 </mapper>

@@ -16,6 +16,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public long insertBoard(Board board) {
-        return boardMapper.save(board);
+        boardMapper.save(board);
+        return board.getBoardNo();
     }
 }
