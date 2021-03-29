@@ -10,4 +10,5 @@ public interface BoardMapper {
 
     long save(Board board);
 
+    Board getBoard(long boardNo);
 }

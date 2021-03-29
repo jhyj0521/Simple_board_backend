@@ -5,4 +5,6 @@ import jh.SimpleBoard.domain.Board;
 public interface BoardService {
 
     long insertBoard(Board board);
+
+    Board getBoard(long boardNo);
 }

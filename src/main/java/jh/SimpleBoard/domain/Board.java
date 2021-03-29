@@ -2,8 +2,6 @@ package jh.SimpleBoard.domain;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class Board {
     private long boardNo;
@@ -13,5 +11,5 @@ public class Board {
     private String content;
     private int commentCnt;
     private int likeCnt;
-    private Date regDate;
+    private String regDate;
 }

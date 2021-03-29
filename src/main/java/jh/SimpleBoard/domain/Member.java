@@ -2,8 +2,6 @@ package jh.SimpleBoard.domain;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class Member {
     private long memberNo;
@@ -11,5 +9,5 @@ public class Member {
     private String memberName;
     private String password;
     private String salt;
-    private Date regDate;
+    private String regDate;
 }
