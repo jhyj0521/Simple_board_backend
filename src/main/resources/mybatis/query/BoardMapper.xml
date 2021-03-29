@@ -24,6 +24,21 @@
         </selectKey>
     </insert>
 
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="Board">
+        UPDATE BOARD
+        SET
+            TITLE = #{title},
+            CONTENT = #{content}
+        WHERE BOARD_NO = #{boardNo}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="long">
+        DELETE FROM BOARD
+        WHERE BOARD_NO = #{boardNo}
+    </delete>
+
     <!-- 게시글 조회 -->
     <select id="getBoard" parameterType="long" resultType="Board">
         SELECT

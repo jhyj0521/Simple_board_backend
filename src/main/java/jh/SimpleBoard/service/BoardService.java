@@ -7,4 +7,8 @@ public interface BoardService {
     long insertBoard(Board board);
 
     Board getBoard(long boardNo);
+
+    void updateBoard(Board board);
+
+    void deleteBoard(long boardNo);
 }
