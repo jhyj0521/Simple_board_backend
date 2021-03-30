@@ -2,7 +2,6 @@ package jh.SimpleBoard.controller;
 
 import jh.SimpleBoard.common.BaseResponse;
 import jh.SimpleBoard.common.BaseResponseCode;
-import jh.SimpleBoard.common.CommonUtil;
 import jh.SimpleBoard.configuration.exception.BaseException;
 import jh.SimpleBoard.domain.Board;
 import jh.SimpleBoard.service.BoardService;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static jh.SimpleBoard.common.CommonUtil.getMemberNo;
@@ -118,5 +118,12 @@ public class BoardController {
         ret.put("info", info);
 
         return new BaseResponse(ret);
+    }
+
+    @GetMapping("/lists")
+    public BaseResponse getBoardList() {
+
+        List<Board> list = boardService.getBoardList();
+        return new BaseResponse(list);
     }
 }

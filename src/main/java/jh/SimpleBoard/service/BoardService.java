@@ -2,6 +2,8 @@ package jh.SimpleBoard.service;
 
 import jh.SimpleBoard.domain.Board;
 
+import java.util.List;
+
 public interface BoardService {
 
     long insertBoard(Board board);
@@ -11,4 +13,6 @@ public interface BoardService {
     void updateBoard(Board board);
 
     void deleteBoard(long boardNo);
+
+    List<Board> getBoardList();
 }

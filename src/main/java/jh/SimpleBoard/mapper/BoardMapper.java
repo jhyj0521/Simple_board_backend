@@ -4,6 +4,8 @@ import jh.SimpleBoard.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface BoardMapper {
@@ -15,4 +17,6 @@ public interface BoardMapper {
     void updateBoard(Board board);
 
     void deleteBoard(long boardNo);
+
+    List<Board> getBoardList();
 }
