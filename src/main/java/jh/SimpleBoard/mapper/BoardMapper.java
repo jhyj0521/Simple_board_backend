@@ -1,6 +1,7 @@
 package jh.SimpleBoard.mapper;
 
 import jh.SimpleBoard.domain.Board;
+import jh.SimpleBoard.domain.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,7 @@ public interface BoardMapper {
 
     void deleteBoard(long boardNo);
 
-    List<Board> getBoardList();
+    List<Board> getBoardList(Criteria criteria);
+
+    int getTotalCnt();
 }

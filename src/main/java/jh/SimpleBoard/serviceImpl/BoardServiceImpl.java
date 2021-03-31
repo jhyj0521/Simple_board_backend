@@ -1,13 +1,16 @@
 package jh.SimpleBoard.serviceImpl;
 
 import jh.SimpleBoard.domain.Board;
+import jh.SimpleBoard.domain.Criteria;
 import jh.SimpleBoard.mapper.BoardMapper;
 import jh.SimpleBoard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -38,7 +41,15 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> getBoardList() {
-        return boardMapper.getBoardList();
+    public Map<String, Object> getBoardList(Criteria criteria) {
+        Map<String, Object> result = new HashMap<>();
+
+        List<Board> list = boardMapper.getBoardList(criteria);
+        int totalCnt = boardMapper.getTotalCnt();
+
+        result.put("totalCnt", totalCnt);
+        result.put("list", list);
+
+        return result;
     }
 }

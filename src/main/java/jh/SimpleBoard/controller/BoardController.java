@@ -4,6 +4,7 @@ import jh.SimpleBoard.common.BaseResponse;
 import jh.SimpleBoard.common.BaseResponseCode;
 import jh.SimpleBoard.configuration.exception.BaseException;
 import jh.SimpleBoard.domain.Board;
+import jh.SimpleBoard.domain.Criteria;
 import jh.SimpleBoard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,10 +48,10 @@ public class BoardController {
         board.setMemberNo(memberNo);
 
         long boardNo = boardService.insertBoard(board);
-        Map<String, Object> ret = new HashMap();
-        ret.put("boardNo", boardNo);
+        Map<String, Object> data = new HashMap();
+        data.put("boardNo", boardNo);
 
-        return new BaseResponse(ret);
+        return new BaseResponse(data);
     }
 
     /**
@@ -114,16 +116,30 @@ public class BoardController {
     public BaseResponse getBoard(@PathVariable("boardNo") long boardNo) {
 
         Board info = boardService.getBoard(boardNo);
-        Map<String, Object> ret = new HashMap<>();
-        ret.put("info", info);
+        Map<String, Object> data = new HashMap<>();
+        data.put("info", info);
 
-        return new BaseResponse(ret);
+        return new BaseResponse(data);
     }
 
+    /**
+     * 게시글 목록 조회
+     * @param criteria
+     * @return
+     */
     @GetMapping("/lists")
-    public BaseResponse getBoardList() {
+    public BaseResponse getBoardList(@ModelAttribute Criteria criteria) {
 
-        List<Board> list = boardService.getBoardList();
-        return new BaseResponse(list);
+        // 리턴 값의 순서를 보장하기 위해 LinkedHashMap으로 구현
+        Map<String, Object> data = new LinkedHashMap<>();
+
+        // 페이지 당 레코드 개수와, 해당 페이지 번호 정보를 받아서 페이징 처리를 하여 목록 조회
+        Map<String, Object> result = boardService.getBoardList(criteria);
+
+        data.put("currentPageNo", criteria.getCurrentPageNo());
+        data.put("recordsPerPage", criteria.getRecordsPerPage());
+        data.put("totalCnt", result.get("totalCnt"));
+        data.put("list", result.get("list"));
+        return new BaseResponse(data);
     }
 }
