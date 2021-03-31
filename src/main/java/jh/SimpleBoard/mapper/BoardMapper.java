@@ -22,4 +22,8 @@ public interface BoardMapper {
     List<Board> getBoardList(Criteria criteria);
 
     int getTotalCnt();
+
+    List<Board> getSearchList(Criteria criteria);
+
+    int getSearchTotalCnt(String searchWord);
 }

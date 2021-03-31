@@ -3,7 +3,6 @@ package jh.SimpleBoard.service;
 import jh.SimpleBoard.domain.Board;
 import jh.SimpleBoard.domain.Criteria;
 
-import java.util.List;
 import java.util.Map;
 
 public interface BoardService {
@@ -17,4 +16,7 @@ public interface BoardService {
     void deleteBoard(long boardNo);
 
     Map<String, Object> getBoardList(Criteria criteria);
+
+    Map<String, Object> getSearchList(Criteria criteria);
+
 }

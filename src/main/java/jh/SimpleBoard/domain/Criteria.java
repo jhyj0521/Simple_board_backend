@@ -11,6 +11,9 @@ public class Criteria {
     // 페이지당 출력할 데이터 개수
     private int recordsPerPage;
 
+    // 검색어
+    private String searchWord;
+
     public Criteria () {
         this.currentPageNo = 1;
         this.recordsPerPage = 10;

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import static jh.SimpleBoard.common.CommonUtil.getMemberNo;
@@ -140,6 +139,28 @@ public class BoardController {
         data.put("recordsPerPage", criteria.getRecordsPerPage());
         data.put("totalCnt", result.get("totalCnt"));
         data.put("list", result.get("list"));
+        return new BaseResponse(data);
+    }
+
+    /**
+     * 게시글 검색
+     * @param criteria
+     * @return
+     */
+    @GetMapping("/searchLists")
+    public BaseResponse getSearchList(@ModelAttribute Criteria criteria) {
+
+        // 리턴 값의 순서를 보장하기 위해 LinkedHashMap으로 구현
+        Map<String, Object> data = new LinkedHashMap<>();
+
+        Map<String, Object> result = boardService.getSearchList(criteria);
+
+        data.put("searchWord", criteria.getSearchWord());
+        data.put("currentPageNo", criteria.getCurrentPageNo());
+        data.put("recordsPerPage", criteria.getRecordsPerPage());
+        data.put("totalCnt", result.get("totalCnt"));
+        data.put("list", result.get("list"));
+
         return new BaseResponse(data);
     }
 }

@@ -7,7 +7,9 @@ import jh.SimpleBoard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,28 @@ public class BoardServiceImpl implements BoardService {
 
         List<Board> list = boardMapper.getBoardList(criteria);
         int totalCnt = boardMapper.getTotalCnt();
+
+        result.put("totalCnt", totalCnt);
+        result.put("list", list);
+
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> getSearchList(Criteria criteria) {
+        Map<String, Object> result = new HashMap<>();
+        List<Board> list = new ArrayList<>();
+
+        // 검색어가 없는 경우에는 빈 리스트와 개수 반환
+        if (ObjectUtils.isEmpty(criteria.getSearchWord())) {
+            result.put("totalCnt", 0);
+            result.put("list", list);
+
+            return result;
+        }
+
+        list = boardMapper.getSearchList(criteria);
+        int totalCnt = boardMapper.getSearchTotalCnt(criteria.getSearchWord());
 
         result.put("totalCnt", totalCnt);
         result.put("list", list);
