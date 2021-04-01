@@ -3,5 +3,25 @@
 
 <mapper namespace="jh.SimpleBoard.mapper.CommentMapper">
 
+    <!-- 댓글 작성 -->
+    <insert id="save" parameterType="Comment">
+        INSERT INTO COMMENT
+        (
+            BOARD_NO,
+            MEMBER_NO,
+            CONTENT,
+            REG_DATE
+        )
+        VALUES
+        (
+            #{boardNo},
+            #{memberNo},
+            #{content},
+            NOW()
+        )
+        <selectKey keyProperty="commentNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
 
 </mapper>
