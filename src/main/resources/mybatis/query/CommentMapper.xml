@@ -24,12 +24,6 @@
         </selectKey>
     </insert>
 
-    <!-- 댓글 삭제 -->
-    <delete id="deleteComment" parameterType="long">
-        DELETE FROM COMMENT
-        WHERE COMMENT_NO = #{commentNo}
-    </delete>
-
     <!-- 댓글 조회 -->
     <select id="getComment" parameterType="long" resultType="Comment">
         SELECT
@@ -42,4 +36,15 @@
         WHERE COMMENT_NO = #{commentNo}
     </select>
 
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="long">
+        DELETE FROM COMMENT
+        WHERE COMMENT_NO = #{commentNo}
+    </delete>
+
+    <!-- 게시글에 있는 모든 댓글 삭제 -->
+    <delete id="deleteBoardComment" parameterType="long">
+        DELETE FROM COMMENT
+        WHERE BOARD_NO = #{boardNo}
+    </delete>
 </mapper>

@@ -3,6 +3,7 @@ package jh.SimpleBoard.serviceImpl;
 import jh.SimpleBoard.domain.Board;
 import jh.SimpleBoard.domain.Criteria;
 import jh.SimpleBoard.mapper.BoardMapper;
+import jh.SimpleBoard.mapper.CommentMapper;
 import jh.SimpleBoard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class BoardServiceImpl implements BoardService {
 
     private final BoardMapper boardMapper;
+    private final CommentMapper commentMapper;
 
     @Override
     public long insertBoard(Board board) {
@@ -40,6 +42,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void deleteBoard(long boardNo) {
         boardMapper.deleteBoard(boardNo);
+        commentMapper.deleteBoardComment(boardNo);
     }
 
     @Override

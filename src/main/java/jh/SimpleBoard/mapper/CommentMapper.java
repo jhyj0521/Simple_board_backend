@@ -13,4 +13,6 @@ public interface CommentMapper {
     Comment getComment(long commentNo);
 
     void deleteComment(long commentNo);
+
+    void deleteBoardComment(long boardNo);
 }

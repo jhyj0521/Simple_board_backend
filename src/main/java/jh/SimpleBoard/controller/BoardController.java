@@ -86,7 +86,7 @@ public class BoardController {
     }
 
     /**
-     * 게시글 삭제
+     * 게시글과 게시글에 있는 댓글까지 삭제
      * @param boardNo
      * @param request
      * @return
