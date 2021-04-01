@@ -10,4 +10,7 @@ public interface CommentMapper {
 
     void save(Comment comment);
 
+    Comment getComment(long commentNo);
+
+    void deleteComment(long commentNo);
 }

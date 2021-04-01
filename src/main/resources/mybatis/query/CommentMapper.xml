@@ -24,4 +24,22 @@
         </selectKey>
     </insert>
 
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="long">
+        DELETE FROM COMMENT
+        WHERE COMMENT_NO = #{commentNo}
+    </delete>
+
+    <!-- 댓글 조회 -->
+    <select id="getComment" parameterType="long" resultType="Comment">
+        SELECT
+            COMMENT_NO,
+            BOARD_NO,
+            MEMBER_NO,
+            CONTENT,
+            REG_DATE
+        FROM COMMENT
+        WHERE COMMENT_NO = #{commentNo}
+    </select>
+
 </mapper>

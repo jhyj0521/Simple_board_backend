@@ -19,4 +19,14 @@ public class CommentServiceImpl implements CommentService {
         commentMapper.save(comment);
         return comment.getCommentNo();
     }
+
+    @Override
+    public Comment getComment(long commentNo) {
+        return commentMapper.getComment(commentNo);
+    }
+
+    @Override
+    public void deleteComment(long commentNo) {
+        commentMapper.deleteComment(commentNo);
+    }
 }
