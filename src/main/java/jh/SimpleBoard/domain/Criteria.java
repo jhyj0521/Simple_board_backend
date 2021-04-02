@@ -5,6 +5,9 @@ import lombok.Data;
 @Data
 public class Criteria {
 
+    // 게시물 번호로 댓글 조회
+    private int boardNo;
+
     // 현재 페이지 번호
     private int currentPageNo;
 
