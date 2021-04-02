@@ -26,4 +26,6 @@ public interface BoardMapper {
     List<Board> getSearchList(Criteria criteria);
 
     int getSearchTotalCnt(String searchWord);
+
+    void updateCommentCnt(long boardNo, int amount);
 }

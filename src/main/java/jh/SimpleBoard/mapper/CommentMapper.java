@@ -22,4 +22,5 @@ public interface CommentMapper {
     List<Comment> getBoardCommentList(Criteria criteria);
 
     int getBoardCommentTotalCnt(long boardNo);
+
 }

@@ -103,4 +103,11 @@
             title LIKE CONCAT('%', #{searchWord}, '%') OR
             content LIKE CONCAT('%', #{searchWord}, '%')
     </select>
+
+    <!-- 댓글 추가, 삭제 시 commentCnt 변경 -->
+    <update id="updateCommentCnt">
+        UPDATE BOARD
+        SET COMMENT_CNT = COMMENT_CNT + #{amount}
+        WHERE BOARD_NO = #{boardNo}
+    </update>
 </mapper>
