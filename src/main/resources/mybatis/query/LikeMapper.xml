@@ -2,5 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="jh.SimpleBoard.mapper.LikeMapper">
-
+    <!-- 좋아요 조회 -->
+    <select id="getLike" parameterType="Like" resultType="Like">
+        SELECT
+            LIKE_NO,
+            BOARD_NO,
+            MEMBER_NO,
+            LIKE_YN
+        FROM LIKE_TABLE
+        WHERE BOARD_NO = #{boardNo} AND MEMBER_NO = #{memberNo}
+    </select>
 </mapper>
