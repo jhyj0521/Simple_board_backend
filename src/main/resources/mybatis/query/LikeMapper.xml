@@ -36,4 +36,17 @@
             LIKE_YN = #{likeYn}
         WHERE LIKE_NO = #{likeNo}
     </update>
+
+    <!-- 게시글에 있는 모든 좋아요 삭제 -->
+    <delete id="deleteBoardLike" parameterType="long">
+        DELETE FROM LIKE_TABLE
+        WHERE BOARD_NO = #{boardNo}
+    </delete>
+
+    <!-- 해당 게시글에 대한 회원의 좋아요 여부 반환 -->
+    <select id="getLikeYn" resultType="String">
+        SELECT LIKE_YN
+        FROM LIKE_TABLE
+        WHERE BOARD_NO = #{boardNo} AND MEMBER_NO = #{memberNo}
+    </select>
 </mapper>

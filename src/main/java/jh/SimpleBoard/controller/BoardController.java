@@ -109,12 +109,27 @@ public class BoardController {
     /**
      * 게시글 세부 조회
      * @param boardNo
+     * @param request
      * @return
      */
     @GetMapping("/{boardNo}")
-    public BaseResponse getBoard(@PathVariable("boardNo") long boardNo) {
+    public BaseResponse getBoard(@PathVariable("boardNo") long boardNo, HttpServletRequest request) {
 
-        Board info = boardService.getBoard(boardNo);
+        long memberNo = getMemberNo(request);
+        Board board = boardService.getBoard(boardNo);
+        String likeYn = boardService.getBoardLikeYn(boardNo, memberNo);
+
+        Map<String, Object> info = new LinkedHashMap<>();
+        info.put("boardNo", board.getBoardNo());
+        info.put("memberNo", board.getMemberNo());
+        info.put("memberName", board.getMemberName());
+        info.put("title", board.getTitle());
+        info.put("content", board.getContent());
+        info.put("commentCnt", board.getCommentCnt());
+        info.put("likeCnt", board.getLikeCnt());
+        info.put("likeYn", likeYn);
+        info.put("regDate", board.getRegDate());
+
         Map<String, Object> data = new HashMap<>();
         data.put("info", info);
 

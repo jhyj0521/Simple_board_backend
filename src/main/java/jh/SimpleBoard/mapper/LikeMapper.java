@@ -12,4 +12,8 @@ public interface LikeMapper {
     void insertLike(Like like);
 
     void updateLike(Like like);
+
+    void deleteBoardLike(long boardNo);
+
+    String getLikeYn(long boardNo, long memberNo);
 }

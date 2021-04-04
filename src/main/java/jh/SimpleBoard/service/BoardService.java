@@ -19,4 +19,5 @@ public interface BoardService {
 
     Map<String, Object> getSearchList(Criteria criteria);
 
+    String getBoardLikeYn(long boardNo, long memberNo);
 }

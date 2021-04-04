@@ -110,4 +110,11 @@
         SET COMMENT_CNT = COMMENT_CNT + #{amount}
         WHERE BOARD_NO = #{boardNo}
     </update>
+
+    <!-- 좋아요 여부 추가, 변경 시 likeCnt 변경 -->
+    <update id="updateLikeCnt">
+        UPDATE BOARD
+        SET LIKE_CNT = LIKE_CNT + #{amount}
+        WHERE BOARD_NO = #{boardNo}
+    </update>
 </mapper>

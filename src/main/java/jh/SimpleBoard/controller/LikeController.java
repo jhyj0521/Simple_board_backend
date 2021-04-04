@@ -24,6 +24,12 @@ public class LikeController {
 
     private final LikeService likeService;
 
+    /**
+     * 좋아요 클릭 시 동작
+     * @param like
+     * @param request
+     * @return
+     */
     @PostMapping("/update")
     public BaseResponse clickLike(@RequestBody Like like, HttpServletRequest request) {
         // 글번호 필수 체크

@@ -4,6 +4,7 @@ import jh.SimpleBoard.domain.Board;
 import jh.SimpleBoard.domain.Criteria;
 import jh.SimpleBoard.mapper.BoardMapper;
 import jh.SimpleBoard.mapper.CommentMapper;
+import jh.SimpleBoard.mapper.LikeMapper;
 import jh.SimpleBoard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class BoardServiceImpl implements BoardService {
 
     private final BoardMapper boardMapper;
     private final CommentMapper commentMapper;
+    private final LikeMapper likeMapper;
 
     @Override
     public long insertBoard(Board board) {
@@ -43,6 +45,7 @@ public class BoardServiceImpl implements BoardService {
     public void deleteBoard(long boardNo) {
         boardMapper.deleteBoard(boardNo);
         commentMapper.deleteBoardComment(boardNo);
+        likeMapper.deleteBoardLike(boardNo);
     }
 
     @Override
@@ -78,5 +81,10 @@ public class BoardServiceImpl implements BoardService {
         result.put("list", list);
 
         return result;
+    }
+
+    @Override
+    public String getBoardLikeYn(long boardNo, long memberNo) {
+        return likeMapper.getLikeYn(boardNo, memberNo);
     }
 }

@@ -28,4 +28,6 @@ public interface BoardMapper {
     int getSearchTotalCnt(String searchWord);
 
     void updateCommentCnt(long boardNo, int amount);
+
+    void updateLikeCnt(long boardNo, int amount);
 }
