@@ -12,4 +12,28 @@
         FROM LIKE_TABLE
         WHERE BOARD_NO = #{boardNo} AND MEMBER_NO = #{memberNo}
     </select>
+
+    <!-- 좋아요 추가 -->
+    <insert id="insertLike" parameterType="Like">
+        INSERT INTO LIKE_TABLE
+        (
+            BOARD_NO,
+            MEMBER_NO,
+            LIKE_YN
+        )
+        VALUES
+        (
+        #{boardNo},
+        #{memberNo},
+        #{likeYn}
+        )
+    </insert>
+
+    <!-- 좋아요 업데이트 -->
+    <update id="updateLike" parameterType="Like">
+        UPDATE LIKE_TABLE
+        SET
+            LIKE_YN = #{likeYn}
+        WHERE LIKE_NO = #{likeNo}
+    </update>
 </mapper>

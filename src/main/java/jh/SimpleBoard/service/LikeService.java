@@ -2,6 +2,10 @@ package jh.SimpleBoard.service;
 
 import jh.SimpleBoard.domain.Like;
 
+import java.util.Map;
+
 public interface LikeService {
-    Like getLike(Like like);
+
+    Map<String, Object> clickLike(Like like);
+
 }

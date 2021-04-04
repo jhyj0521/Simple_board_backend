@@ -2,9 +2,7 @@ package jh.SimpleBoard.controller;
 
 import jh.SimpleBoard.common.BaseResponse;
 import jh.SimpleBoard.common.BaseResponseCode;
-import jh.SimpleBoard.common.CommonUtil;
 import jh.SimpleBoard.configuration.exception.BaseException;
-import jh.SimpleBoard.domain.Board;
 import jh.SimpleBoard.domain.Comment;
 import jh.SimpleBoard.domain.Criteria;
 import jh.SimpleBoard.service.CommentService;

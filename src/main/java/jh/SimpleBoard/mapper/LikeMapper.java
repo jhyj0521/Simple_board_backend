@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface LikeMapper {
     Like getLike(Like like);
+
+    void insertLike(Like like);
+
+    void updateLike(Like like);
 }
