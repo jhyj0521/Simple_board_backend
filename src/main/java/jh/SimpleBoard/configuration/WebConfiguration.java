@@ -7,6 +7,7 @@ import jh.SimpleBoard.interceptor.BearerAuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -50,5 +51,12 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(baseHandlerInterceptor());
         registry.addInterceptor(bearerAuthInterceptor()).excludePathPatterns("/members/*");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 모든 uri에 대해 http://localhost:3000의 접근을 허용한다.
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000");
     }
 }
