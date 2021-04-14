@@ -24,6 +24,7 @@ public class BaseControllerAdvice {
      * @return
      */
     @ExceptionHandler(BaseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     private BaseResponse<?> handleBaseException(BaseException e) {
         return new BaseResponse<String>(e.getResponseCode(), messageSource.getMessage(e.getResponseCode().name(), e.getArgs(), Locale.KOREAN));
     }
