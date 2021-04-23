@@ -5,8 +5,7 @@ import jh.SimpleBoard.common.BaseResponseCode;
 import jh.SimpleBoard.common.JwtTokenUtil;
 import jh.SimpleBoard.configuration.exception.UnauthorizedException;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RequiredArgsConstructor
+@Slf4j
 public class BearerAuthInterceptor implements HandlerInterceptor {
 
     private final AuthorizationExtractor authorizationExtractor;
@@ -22,12 +22,16 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        log.info(">>> BearerAuth interceptor 호출");
         String token = authorizationExtractor.extract(request, "Bearer");
+        log.info("jwt: " + token);
         if (ObjectUtils.isEmpty(token)) {
-            return true;
+            log.error("토큰 값 비어있음");
+            throw new UnauthorizedException(BaseResponseCode.CODE_401);
         }
 
         if (!jwtTokenUtil.validateToken(token)) {
+            log.error("토큰 기간 만료");
             throw new UnauthorizedException(BaseResponseCode.CODE_401);
         }
 
