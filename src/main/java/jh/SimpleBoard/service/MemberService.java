@@ -11,4 +11,6 @@ public interface MemberService {
     String createToken(Member member);
 
     int idPassCheck(Member member);
+
+    String getMemberName(String memberId);
 }

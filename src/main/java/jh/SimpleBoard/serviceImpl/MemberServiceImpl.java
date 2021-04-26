@@ -66,4 +66,9 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.idPassCheck(member);
     }
 
+    @Override
+    public String getMemberName(String memberId) {
+        return memberMapper.getMemberName(memberId);
+    }
+
 }

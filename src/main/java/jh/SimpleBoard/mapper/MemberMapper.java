@@ -17,4 +17,6 @@ public interface MemberMapper {
     int idPassCheck(Member member);
 
     String getMemberNo(String memberId);
+
+    String getMemberName(String memberId);
 }
