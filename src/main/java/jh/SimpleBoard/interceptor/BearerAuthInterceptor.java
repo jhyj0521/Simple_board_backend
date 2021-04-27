@@ -22,6 +22,11 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        if (request.getMethod().equals("OPTIONS")) {
+            log.info("option 메서드인 경우, true 반환");
+            return true;
+        }
+
         log.info(">>> BearerAuth interceptor 호출");
         String token = authorizationExtractor.extract(request, "Bearer");
         log.info("jwt: " + token);

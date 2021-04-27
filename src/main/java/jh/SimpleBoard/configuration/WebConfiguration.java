@@ -50,7 +50,8 @@ public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(baseHandlerInterceptor());
-        registry.addInterceptor(bearerAuthInterceptor()).excludePathPatterns("/members/*");
+        registry.addInterceptor(bearerAuthInterceptor())
+                .excludePathPatterns("/members/*");
     }
 
     @Override
