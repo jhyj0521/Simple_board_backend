@@ -85,6 +85,13 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public String getBoardLikeYn(long boardNo, long memberNo) {
-        return likeMapper.getLikeYn(boardNo, memberNo);
+        String likeYn = likeMapper.getLikeYn(boardNo, memberNo);
+
+        // likeYn 객체가 생성되지 않았다면 기본 값은 N
+        if (ObjectUtils.isEmpty(likeYn)) {
+            likeYn = "N";
+        }
+
+        return likeYn;
     }
 }
