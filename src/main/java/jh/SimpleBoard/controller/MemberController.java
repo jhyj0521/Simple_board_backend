@@ -78,19 +78,11 @@ public class MemberController {
         // 토큰 생성
         String token = memberService.createToken(member);
 
-        // 회원 이름 가져오기
-        String memberName = memberService.getMemberName(member.getMemberId());
-
-        // 토큰과 회원 이름 쿠키에 담아줌
-        Cookie[] loginCookie = new Cookie[2];
-        loginCookie[0] = new Cookie("jwt", token);
-        loginCookie[1] = new Cookie("memberName", memberName);
-
-        for(Cookie c : loginCookie) {
-            c.setPath("/");
-            c.setMaxAge(60 * 60 * 24);
-            response.addCookie(c);
-        }
+        // 토큰 쿠키에 담아줌
+        Cookie cookie = new Cookie("jwt", token);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 60 * 24);
+        response.addCookie(cookie);
 
         return new BaseResponse();
     }

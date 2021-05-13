@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+import static jh.SimpleBoard.common.CommonUtil.getMemberName;
 import static jh.SimpleBoard.common.CommonUtil.getMemberNo;
 
 @RestController
@@ -17,9 +18,11 @@ public class JwtController {
     @PostMapping()
     public BaseResponse getJwtInfo(HttpServletRequest request) {
         long memberNo = getMemberNo(request);
+        String memberName = getMemberName(request);
 
         Map<String, Object> data = new HashMap<>();
         data.put("memberNo", memberNo);
+        data.put("memberName", memberName);
 
         return new BaseResponse(data);
     }

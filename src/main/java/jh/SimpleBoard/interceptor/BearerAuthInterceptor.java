@@ -41,7 +41,9 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
         }
 
         String memberPk = jwtTokenUtil.getMemberPk(token);
+        String memberName = jwtTokenUtil.getMemberName(token);
         request.setAttribute("memberPk", memberPk);
+        request.setAttribute("memberName", memberName);
 
         return true;
     }

@@ -9,9 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static jh.SimpleBoard.common.SHA256Util.*;
 
 @Service
@@ -38,10 +35,11 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public String createToken(Member member) {
-        // 회원 아이디로 회원 번호를 받아옴
+        // 회원 아이디로 회원 번호와 이름을 받아옴
         String memberNo = memberMapper.getMemberNo(member.getMemberId());
+        String memberName = memberMapper.getMemberName(member.getMemberId());
 
-        String token = jwtTokenUtil.createToken(memberNo);
+        String token = jwtTokenUtil.createToken(memberNo, memberName);
         return token;
     }
 
